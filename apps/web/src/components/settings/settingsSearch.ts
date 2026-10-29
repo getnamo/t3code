@@ -18,6 +18,7 @@ import type { ResolvedSettingsScope } from "./settingsScope";
 export type SettingsPath =
   | "/settings/projects"
   | "/settings/general"
+  | "/settings/privacy"
   | "/settings/diagnostics"
   | "/settings/appearance"
   | "/settings/chat"
@@ -89,6 +90,7 @@ export const SETTINGS_SECTION_LABELS: Readonly<Record<SettingsPath, string>> = {
   "/settings/diagnostics": "Diagnostics",
   "/settings/projects": "Projects",
   "/settings/general": "General",
+  "/settings/privacy": "Privacy",
   "/settings/appearance": "Appearance",
   "/settings/chat": "Chat",
   "/settings/diffs": "Diffs & pull requests",
@@ -119,6 +121,7 @@ export const SETTINGS_NAV_GROUPS: ReadonlyArray<{
     heading: null,
     paths: [
       "/settings/general",
+      "/settings/privacy",
       "/settings/appearance",
       "/settings/chat",
       "/settings/diffs",
@@ -216,6 +219,12 @@ const SOURCE_CONTROL_HOST_TERMS = sourceControlClients.definitions
   .join(" ");
 
 export const SETTINGS_SEARCH_ITEMS = [
+  {
+    id: "privacy-telemetry",
+    title: "Telemetry",
+    to: "/settings/privacy",
+    searchTerms: ["privacy analytics usage data tracking disabled off"],
+  },
   {
     id: "storage-worktree-keep-when",
     targetId: "storage-worktrees",
@@ -1183,6 +1192,7 @@ const SETTINGS_CATEGORY_SCOPES: Readonly<Record<SettingsPath, SettingsSearchScop
   "/settings/diagnostics": "environment",
   "/settings/projects": "project",
   "/settings/general": null,
+  "/settings/privacy": null,
   "/settings/appearance": null,
   "/settings/chat": null,
   "/settings/diffs": null,
